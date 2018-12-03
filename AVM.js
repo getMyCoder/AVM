@@ -6,11 +6,26 @@
             AvmVShow: "m-show"
         };
         // -----------------onload--------------------------
-        for (var keyLoad in Summary.loads) {
-            new Summary.loads[keyLoad]
+        // 用来加载load执行的方法或是ajax
+        var LoadFlage = false;
+        var timer;
+        setTime();
+        function setTime() {
+            timer = setInterval(function () {
+                if (LoadFlage) {
+                    setLoop(DIV.children());
+                    clearInterval(timer);
+                } else {
+                    setLoad()
+                }
+            }, 100)
         }
-        setLoop(DIV.children());
-
+        function setLoad() {
+            for (var keyLoad in Summary.loads) {
+                new Summary.loads[keyLoad]
+            }
+            LoadFlage = true;
+        }
         // createHTML-->v-for-->loop
         function setLoop(FSomes) {
             var FSomess = FSomes.parent();

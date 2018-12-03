@@ -1,85 +1,85 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<title>Document</title>
-	<link rel="stylesheet" href="scroll.css">
-	<script type="text/javascript" src="jquery.js"></script>
-	<script type="text/javascript" src="AVM.js"></script>
-	<style type="text/css">
-		body{margin: 0;padding: 0;background: #232323;color: #999;}
-		*{margin: 0;padding: 0;}
-        .main{width: 500px;  margin: 0 auto;}
-		.main p,.main span,i{width: 100%;line-height: 30px;border:1px solid; margin: 5px 0;display: block;cursor: pointer;}
-		.main p{border-color:#ccc;}
-		.main span{border-color: #0B61A4;display: block;width: 100%;line-height: 30px; }
-		.active{background: #fff;}
-		.active1{background: red;}
-		.active2{background: blue;}
-	</style>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>AVM</title>
+    <link rel="stylesheet" href="../scroll.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="AVM.js"></script>
+    <style type="text/css">
+        body {margin: 0;padding: 0;background: #232323;color: #999;}
+        * {margin: 0;padding: 0;}
+        .main {width: 500px; margin: 0 auto;}
+        .main p, .main span, i {width: 100%;line-height: 30px;border: 1px solid; margin: 5px 0;display: block;cursor: pointer;}
+        .main p {border-color: #ccc;}
+        .main span {border-color: #0B61A4;display: block;width: 100%;line-height: 30px; }
+        .active {background: #fff;}
+        .active1 {background: red;}
+        .active2 {background: blue;}
+    </style>
 </head>
 <body>
 <div id="main" class="main">
-	<div>
-		<h2>
-			<p m-for="ar in arr" val="hello world" :click="www()">this-p:{{ar}}++ {{message}}</p>
-			<p>{{message}}</p>
-		</h2>
-		<h3>
-			<span m-for="as in arrayJson" :click="www()">{{as.name}}+-->this-h3-span:{{as.name}}{{json.age}}</span>
-		</h3>
-		<p>yes:{{message}}</p>
-	</div>
-	<span m-for="msgs in arrss" :click="mmm()">{{msgs}}+this-span:{{msgs}} {{message}}{{json.age}}</span>
-	<p m-for="msg in arrayJson" :click="www()">www: ----->{{msg.name}} </p>
-	<p :click="sss()">click---> </p>
-	<p>this message:--> {{json.name}}</p>
+    <div>
+        <h2>
+            <p m-for="ar in arr" val="hello world" :click="www()">this-p:{{ar}}++ {{message}}</p>
+            <p>{{message}}</p>
+        </h2>
+        <h3>
+            <span m-for="as in arrayJson" :click="www()">{{as.name}}+-->this-h3-span:{{as.name}}{{json.age}}</span>
+        </h3>
+        <p>yes:{{message}}</p>
+    </div>
+    <span m-for="msgs in arrss" :click="mmm()">{{msgs}}+this-span:{{msgs}} {{message}}{{json.age}}</span>
+    <p m-for="msg in arrayJson" :click="www()">www: ----->{{msg.name}} </p>
+    <p :click="sss()">click---> </p>
+    <p>this message:--> {{json.name}}</p>
 </div>
 <script type="text/javascript">
-	    var VAM={
-				data:{
-					arr:[],
-					arrss:["h","e","l","l","o","!"],
-					wwws:["what","are","your","doing","?"],
-					message:"张三是最棒的！",
-					json:{name:"王五",age:202323232222323},
-					arrayJson:[
-						{name:"熊大",age:30,dress:"森林1"},
-						{name:"熊二",age:35,dress:"森林2"},
-						{name:"熊三",age:40,dress:"森林3"},
-						{name:"张三",age:40,dress:"山东省"}
-					]
-				},
-				loads:{
-					what:function () {
-						$.ajax({
-							type:"GET",
-							url:"json.json",
-                            async:false,
-                            success:function (response) {
-                                VAM.data.arr=response
-                            }
-						})
+    var VAM = {
+        data: {
+            arr: [],
+            arrss: ["h", "e", "l", "l", "o", "!"],
+            wwws: ["what", "are", "your", "doing", "?"],
+            message: "张三是最棒的！",
+            json: {name: "王五", age: 202323232222323},
+            arrayJson: [
+                {name: "熊大", age: 30, dress: "森林1"},
+                {name: "熊二", age: 35, dress: "森林2"},
+                {name: "熊三", age: 40, dress: "森林3"},
+                {name: "张三", age: 40, dress: "山东省"}
+            ]
+        },
+        loads: {
+            what: function () {
+                $.ajax({
+                    type: "GET",
+                    url: "json.json",
+                    success: function (response) {
+                        VAM.data.arr = response;
+                        console.log(response);
                     }
-				},
-				method:{
-					www:function (Obj) {
-                        console.log(Obj.html());
-                        Obj.addClass("active").siblings().removeClass("active")
-                    },
-					mmm:function (Obj) {
-                        console.log(Obj.html());
-                        Obj.addClass("active1").siblings().removeClass("active1")
-					},
-                    sss:function (Obj) {
-                        console.log(Obj.html());
-                        Obj.addClass("active2").siblings().removeClass("active2")
-                    }
-				}
-		};
-        $("#main").AVM(VAM);
+                })
+            }
+        },
+        method: {
+            www: function (Obj) {
+                console.log(Obj.html());
+                Obj.addClass("active").siblings().removeClass("active")
+            },
+            mmm: function (Obj) {
+                console.log(Obj.html());
+                Obj.addClass("active1").siblings().removeClass("active1")
+            },
+            sss: function (Obj) {
+                console.log(Obj.html());
+                Obj.addClass("active2").siblings().removeClass("active2")
+            }
+        }
+    };
+    $("#main").AVM(VAM);
 </script>
 
 </body>
