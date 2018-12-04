@@ -10,9 +10,12 @@
         var LoadFlage = false;
         var timer;
         setTime();
+        var proBodys=DIV.html();
+        DIV.children().remove();
         function setTime() {
             timer = setInterval(function () {
                 if (LoadFlage) {
+                    DIV.append(proBodys);
                     setLoop(DIV.children());
                     clearInterval(timer);
                 } else {
