@@ -10,10 +10,8 @@
         var LoadFlage = false;
         var timer;
         setTime();
-        var proBodys = DIV.html();
+        var proBodys=DIV.html();
         DIV.children().remove();
-
-        // 设置加载load的dom
         function setTime() {
             timer = setInterval(function () {
                 if (LoadFlage) {
@@ -25,15 +23,12 @@
                 }
             }, 100)
         }
-
-        // 预先加载的dom
         function setLoad() {
             for (var keyLoad in Summary.loads) {
                 new Summary.loads[keyLoad]
             }
             LoadFlage = true;
         }
-
         // createHTML-->v-for-->loop
         function setLoop(FSomes) {
             var FSomess = FSomes.parent();
@@ -178,6 +173,12 @@
             var getHtmlV = itemsDiv.html();
             if (getHtmlV.indexOf(lableSymbolS) != "-1") {
                 // AVM中的Array
+                if (itemsDivHtml && selectVal) {
+                    if (getHtmlV.substring(getHtmlV.indexOf(lableSymbolS) + 2, getHtmlV.indexOf(lableSymbolE)) == selectVal) {
+                        var regVal = lableSymbolS + selectVal + lableSymbolE;
+                        itemsDiv.html(setReg(getHtmlV, regVal, itemsDivHtml));
+                    }
+                }
                 // AVM中字符串、数组
                 for (var keyE in Summary.data) {
                     getHtmlV = itemsDiv.html();
@@ -204,11 +205,6 @@
                                         }
                                     }
                                 }
-                            } else {
-                                // if (getHtmlV.substring(getHtmlV.indexOf(lableSymbolS) + 2, getHtmlV.indexOf(lableSymbolE)) == selectVal) {
-                                var regVal = lableSymbolS + selectVal + lableSymbolE;
-                                itemsDiv.html(setReg(getHtmlV, regVal, itemsDivHtml));
-                                // }
                             }
                         } else {
                             for (var keyJson in Summary.data[keyE]) {
