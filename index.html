@@ -16,15 +16,16 @@
         .main p {border-color: #ccc;}
         .main span {border-color: #0B61A4;display: block;width: 100%;line-height: 30px; }
         .active {background: #fff;}
-        .active1 {background: red;}
+        .active1 {background: #ff722e;}
         .active2 {background: blue;}
+        .error{color: #fff;background: red;display: inline-block;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;padding: 0 5px;}
     </style>
 </head>
 <body>
 <div id="main" class="main">
     <div>
         <h2>
-            <p m-for="ar in arr" val="hello world" :click="www()">this-p:{{ar}}++ {{message}}</p>
+            <p m-for="ar in arr" val="hello world" :click="www()">{{message}}this-p:{{ar}}  </p>
             <p>{{message}}</p>
         </h2>
         <h3>
@@ -32,10 +33,10 @@
         </h3>
         <p>yes:{{message}}</p>
     </div>
-    <span m-for="msgs in arrss" :click="mmm()">{{msgs}}+this-span:{{msgs}} {{message}}{{json.age}}</span>
-    <p m-for="msg in arrayJson" :click="www()">www: ----->{{msg.name}} </p>
+    <span m-for="msgs in arrss" :click="mmm()">{{message}} +this--><div class="error">Error</div> :{{msgs}}  </span>
+    <p m-for="msg in arrayJson" :click="www()">{{message}}www: ----->{{msg.name}} </p>
     <p :click="sss()">click---> </p>
-    <p>this message:--> {{json.name}}</p>
+    <p>this :--> {{json.name}}</p>
 </div>
 <script type="text/javascript">
     var VAM = {
@@ -59,7 +60,6 @@
                     url: "json.json",
                     success: function (response) {
                         VAM.data.arr = response;
-                        console.log(response);
                     }
                 })
             }
