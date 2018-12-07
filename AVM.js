@@ -7,8 +7,7 @@
         };
         // -----------------onload--------------------------
         // 用来加载load执行的方法或是ajax
-        var LoadFlage = false;
-        var timer;
+        var LoadFlage = false,timer;
         setTime();
         var proBodys = DIV.html();
         DIV.children().remove();
@@ -36,10 +35,7 @@
 
         // createHTML-->v-for-->loop
         function setLoop(FSomes) {
-            var FSomess = FSomes.parent();
-            var FSome = FSomes;
-            var FLength = 0;
-            var FLsize = true;
+            var FSomess = FSomes.parent(),FSome = FSomes,FLength = 0,FLsize = true;
             for (var i = 0; i < FSome.length; i++) {
                 if (FSome.eq(i).attr(attrValAdd.AvmVFor)) {
                     if (FLsize) {
@@ -76,9 +72,7 @@
                     setMessage(FSome.eq(i));
                 }
                 if (FSome.eq(i).children().length != 0) {
-                    var sonSome = FSome.eq(i).children();
-                    var FLengths = 0;
-                    var FLsizes = true;
+                    var sonSome = FSome.eq(i).children(),FLengths = 0,FLsizes = true;
                     for (var m = 0; m < sonSome.length; m++) {
                         if (sonSome.eq(m).attr(attrValAdd.AvmVFor)) {
                             if (FLsizes) {
